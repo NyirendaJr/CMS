@@ -9,7 +9,9 @@ th, td {
   padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
 
 th {
   background-color: #4CAF50;
@@ -151,7 +153,8 @@ body{
 
 }
 .content_section{
-
+  border: 1px solid blue;
+  width: 1092px;
 }
 .content_section_header{
   display: -webkit-box;
@@ -235,6 +238,97 @@ body{
 }
 
 /* register page */
+.register_container{
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+}
+.register_results{
+  margin-top: 40px;
+  margin-left: 5px;
+  width: 730px;
+  border: 1px solid #ccc;
+  overflow: scroll;
+  height: 500px;
+}
+.register_wrapper {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-top: 40px;
+    margin-left: 5px;
+    width: 300px;
+}
+.register_container{
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+}
+.register_results{
+  margin-top: 40px;
+  margin-left: 5px;
+  width: 730px;
+  border: 1px solid #ccc;
+  overflow: scroll;
+  height: 500px;
+}
+.register_wrapper {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-top: 40px;
+    margin-left: 5px;
+    width: 300px;
+}
+.edit_user_wrapper{
+  /* border-radius: 5px; */
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: 40px;
+  margin-left: 5px;
+  width: 700px;
+}
+.edit_user_wrapper input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.edit_user_wrapper input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.edit_user_wrapper input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit_user_wrapper input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.edit_user_wrapper{
+  /* border-radius: 5px; */
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: 40px;
+  margin-left: 5px;
+  width: 700px;
+}
 .register_wrapper input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -270,13 +364,7 @@ body{
     background-color: #45a049;
 }
 
-.register_wrapper {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    margin: 40px;
-    width: 500px;
-}
+
 
 /* login page */
 .login_section input[type=password] {

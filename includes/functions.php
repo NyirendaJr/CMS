@@ -18,6 +18,13 @@ function redirect_to( $location = NULL ) {
   }
 }
 
+function redirect_with( $location = NULL, $data = NULL ) {
+  if ($location != NULL) {
+    header("Location: $location".'?userid='.$data);
+    exit;
+  }
+}
+
 function output_message($message="") {
   if (!empty($message)) {
     return "<p class=\"message\">{$message}</p>";

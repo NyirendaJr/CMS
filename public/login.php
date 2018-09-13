@@ -6,8 +6,9 @@
 
   if (isset($_POST['submit'])) { // Form has been submitted.
 
-      $regNo = trim($_POST['regNo']);
-      $password = trim($_POST['password']);
+      $regNo    = trim($_POST['regNo']);
+      $password =   encrypt(trim($_POST['password']));
+
 
     // Check database to see if username/password exist.
   	$found_user = User::authenticate($regNo, $password);

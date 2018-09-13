@@ -42,6 +42,11 @@ class User extends DatabaseObject {
     return static::find_by_sql($sql);
   }
 
+  public static function find_by_regNo($reg_no){
+    $sql = "SELECT * FROM ". static::$table_name . " WHERE regNo = '$reg_no'";
+    return static::find_by_sql($sql);
+  }
+
 }
 
  ?>

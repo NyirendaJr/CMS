@@ -13,6 +13,11 @@ class Ynote extends DatabaseObject {
   public $created_at;
   public $updated_at;
 
+  public static function is_user_exist($regNo){
+    $user = User::find_by_regNo($regNo);
+    return $user;
+  }
+
 }
 
  ?>

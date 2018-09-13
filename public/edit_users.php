@@ -1,8 +1,14 @@
 <?php
 require_once('../includes/init.php');
+isset($_GET['user_id']) ? $_GET['user_id'] : '';
+  $user_id = $_GET['user_id'];
+  $user = User::find_by_id($user_id);
 // edit user data
 if (isset($_POST['edit_user'])) {
-  $user              = new User();
+  // $user              = new User();
+  $userid = $_POST['user_id'];
+  // find user by id again
+  $user = User::find_by_id($userid);
   $user->regNo       = $_POST['regNo'];
   $user->firstname   = $_POST['firstname'];
   $user->lastname    = $_POST['lastname'];
@@ -10,9 +16,9 @@ if (isset($_POST['edit_user'])) {
   $user->gender      = $_POST['gender'];
   $user->email       = $_POST['email'];
   $user->category_id = $_POST['category_id'];
-  $user->password    = encrypt($_POST['password']);
+  //$user->password    = encrypt($_POST['password']);
   $user->update();
-  redirect_to('home.php');
+  redirect_with('test.php', $userid);
 }
 ?>
 <!DOCTYPE html>
@@ -44,14 +50,10 @@ if (isset($_POST['edit_user'])) {
       </div>
     </div>
     <div class="content_section">
-      <div class="register_wrapper">
+      <div class="edit_user_wrapper">
         <h3>Edit user data</h3>
-        <?php
-          isset($_GET['user_id']) ? $_GET['user_id'] : '';
-            $user_id = $_GET['user_id'];
-            $user = User::find_by_id($user_id);
-         ?>
        <form action="edit_users.php" method="post">
+         <input type="hidden" name="user_id" value="<?php echo $user_id?>">
          <label>Reg Number</label>
          <input type="text" value="<?php echo $user->regNo?>" name="regNo">
          <label>First Name</label>
