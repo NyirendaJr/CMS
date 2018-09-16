@@ -18,7 +18,7 @@ class User extends DatabaseObject {
   public $created_at;
   public $updated_at;
 
-   public function full_name(){
+  public function full_name(){
     if (isset($this->firstname) && isset($this->lastname)) {
       return $this->firstname . " " . $this->lastname;
     } else {
@@ -26,7 +26,7 @@ class User extends DatabaseObject {
     }
   }
 
-   public static function authenticate($regNo="", $password="") {
+  public static function authenticate($regNo="", $password="") {
     global $database;
     // $username = $database->escape_value($username);
     // $password = $database->escape_value($password);

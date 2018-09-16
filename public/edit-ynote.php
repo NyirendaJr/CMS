@@ -9,7 +9,8 @@
   // add ynote Delivery note
   if (isset($_POST['submit'])) {
      // update ynote
-     $ynote_id          = $_POST['ynote_id'];
+    $ynote_id = $_POST['ynote_id'];
+
      $ynote             = new Ynote();
      $ynote->id         = $ynote_id;
      $ynote->farmerNo   = $_POST['farmerNo'];
@@ -17,8 +18,14 @@
      $ynote->created_at = $_POST['created_at'];
      $ynote->tone       = $_POST['tone'];
      $ynote->sucrose    = $_POST['sucrose'];
-     // update
      $ynote->update();
+
+     // //calculate total payment
+     $total_pay = Ynote::calculateTotalPayment($ynote_id);
+     $ynote->total_pay  = $total_pay;
+     $ynote->update();
+
+
      redirect_to('y-note.php');
 
   } else {

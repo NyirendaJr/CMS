@@ -1,12 +1,13 @@
 <?php
 require_once('../includes/init.php');
-
+if(!$session->is_logged_in()){redirect_to("login.php");}
 // delete user
 if (isset($_GET['id'])) {
   $user_id = $_GET['id'];
   $user = new User();
   $user->id = $user_id;
   $user->delete();
+  redirect_with('users.php', 4);
 }
 ?>
 <!DOCTYPE html>
@@ -40,6 +41,7 @@ if (isset($_GET['id'])) {
     <div class="content_section">
       <div class="list_of_users">
         <?php if (isset($_GET['name'])){echo "<h2>List of ".$_GET['name']."</h2>";} ?>
+        <hr>
         <table>
             <tr>
               <th>S/N</th>
@@ -75,6 +77,8 @@ if (isset($_GET['id'])) {
                }
             ?>
         </table>
+        <hr>
+        <a href="../includes/pdf/<?php echo $_GET['name']?>_pdf.php">Create PDF</a>
       </div>
     </div>
   </div>

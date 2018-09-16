@@ -1,5 +1,6 @@
 <?php
 require_once('../includes/init.php');
+if(!$session->is_logged_in()){redirect_to("login.php");}
 require_once(LIB_PATH.DS.'database.php');
 // delete user
 if (isset($_GET['id'])) {

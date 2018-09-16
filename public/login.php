@@ -11,6 +11,8 @@
 
 
     // Check database to see if username/password exist.
+	 //$user = new User();
+	 //$found_user = $user->authenticate($regNo, $password);
   	$found_user = User::authenticate($regNo, $password);
 
     if ($found_user) {
@@ -54,10 +56,16 @@
         <h2>Login</h2>
         <?php if (isset($message)) {echo $message;} ?>
         <form action="login.php" method="post">
+
+          <!-- reg number -->
           <label for="regNo">Reg Number</label>
           <input type="text" name="regNo" required>
+
+          <!-- password -->
           <label for="password">Password</label>
           <input type="password" name="password" required>
+
+          <!-- login btn -->
           <input type="submit" value="Login" name="submit">
         </form>
       </div>

@@ -18,7 +18,9 @@ th {
   color: white;
 }
 
-
+h1, h2, h3, h4 {
+  margin: 0px;
+}
 
 body{
   margin: 0px;
@@ -153,7 +155,7 @@ body{
 
 }
 .content_section{
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   width: 1092px;
 }
 .content_section_header{

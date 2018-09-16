@@ -1,6 +1,6 @@
 <div class="home_header">
   <div class="logo_section">
-    <a href="home.php">
+    <a href="index.php">
       <img src="img/ilovo.png" style="height: 80px;">
     </a>
   </div>

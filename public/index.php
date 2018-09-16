@@ -1,5 +1,5 @@
 <?php require_once('../includes/init.php') ?>
-<?php if($session->is_logged_in()){redirect_to("home.php");} ?>
+<?php //if($session->is_logged_in()){redirect_to("home.php");} ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

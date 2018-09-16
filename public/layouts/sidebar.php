@@ -8,5 +8,5 @@
     <li><a href="y-note.php">Y-note</a></li>
     <li><a href="">On process</a></li>
     <li><a href="">Invoice</a></li>
-    <li><a href="">Logout</a></li>
+    <li><a href="logout.php">Logout</a></li>
 </ul>

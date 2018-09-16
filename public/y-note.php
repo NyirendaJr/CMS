@@ -1,5 +1,9 @@
-<?php require_once('../includes/init.php') ?>
 <?php
+require_once('../includes/init.php');
+if(!$session->is_logged_in()){redirect_to("login.php");} 
+?>
+<?php
+  isset($_GET['userid']) ? $_GET['userid'] : '';
 // add new ynote
 if (isset($_POST['submit'])) {
   $carRegNo = trim($_POST['carRegNo']);
@@ -8,15 +12,19 @@ if (isset($_POST['submit'])) {
   // check if user exist
   $res = Ynote::is_user_exist($farmerNo);
   if ($res != []) {
+
     //create new instance of Ynote Model
     $ynote = new Ynote();
+
     $ynote->farmerNo = $farmerNo;
     $ynote->carRegNo = $carRegNo;
-    $ynote->tone = NULL;
-    $ynote->sucrose = NULL;
+    $ynote->tone = 0.000;
+    $ynote->sucrose = 0.0000;
+    $ynote->total_pay = 0.000;
+    $ynote->status = 'Not Paid';
     $ynote->created_at;
     $ynote->updated_at;
-    $rs = $ynote->save();
+    $ynote->save();
   } else {
     $message = "This user is note registered";
   }
@@ -32,6 +40,11 @@ if (isset($_GET['del_ynote_id'])) {
   $ynote->id = $id;
   $ynote->delete();
 }
+
+// calculate total payment
+// if ($_GET['t_ynote_id']) {
+//    //$ynote_id = $_GET['t_ynote_id'];
+// }
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +88,8 @@ if (isset($_GET['del_ynote_id'])) {
           </form>
         </div>
         <div class="list_of_ynote">
-          <h2>List of Y-note</h2>
+          <h3>List of Y-note</h3>
+          <hr>
           <table>
             <thead>
               <tr>
@@ -84,7 +98,9 @@ if (isset($_GET['del_ynote_id'])) {
                 <th>VIN</th>
                 <th>Tone</th>
                 <th>Sucrose</th>
+                <th>Total Payment</th>
                 <th>Date</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -99,8 +115,11 @@ if (isset($_GET['del_ynote_id'])) {
                   <td><?php echo $value->carRegNo ?></td>
                   <td><?php echo $value->tone ?></td>
                   <td><?php echo $value->sucrose ?></td>
+                  <td><?php echo Ynote::reCalculateTotalPayment($value->id) ?></td>
                   <td><?php echo $value->created_at ?></td>
+                  <td><?php echo $value->status ?></td>
                   <td>
+                     <a href="pay-ynote.php?pay_ynote_id_url=<?php echo $value->id?>">Pay</a>
                      <a href="edit-ynote.php?ynote_id=<?php echo $value->id?>">Edit</a>
                      <a href="y-note.php?del_ynote_id=<?php echo $value->id?>">Delete</a>
                   </td>
@@ -110,6 +129,11 @@ if (isset($_GET['del_ynote_id'])) {
               ?>
             </tbody>
           </table>
+          <hr>
+          <p>Average Sucrose: <b><?php echo Ynote::calculateSucroseAvg(); ?></b></p>
+          <hr>
+          <a href="#">Create PDF</a>
+          <a href="#">Pay All</a>
         </div>
       </div>
     </div>

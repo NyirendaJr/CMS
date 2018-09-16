@@ -20,7 +20,7 @@ function redirect_to( $location = NULL ) {
 
 function redirect_with( $location = NULL, $data = NULL ) {
   if ($location != NULL) {
-    header("Location: $location".'?userid='.$data);
+    header("Location: $location".'?cat='.$data);
     exit;
   }
 }
